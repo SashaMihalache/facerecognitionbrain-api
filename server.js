@@ -22,6 +22,11 @@ const db = knex({
 app.use(bodyParser.json());
 app.use(cors());
 
+app.get('/', (req, res) => {
+  console.log('Server is running.');
+  res.send('API is booted.')
+});
+
 app.get('/profile/:id', (req, res) => profileCtrl.handleGet(req, res, db));
 
 app.post('/signin', (req, res) => authCtrl.handleSignin(req, res, db, bcrypt));
